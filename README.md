@@ -113,3 +113,12 @@ npm test
 ```
 
 Covers the colour, border, number-format, Word-unit and merged-cell mapping (`src/mapping.js`).
+
+## Handover
+
+[`docs/handover.docx`](docs/handover.docx) is a short write-up for reviewers: why formatting is lost,
+the libraries used, how to replicate the POC, how to wire it into DevExtreme, measured results and open questions.
+
+## Licence
+
+[MIT](LICENSE)
