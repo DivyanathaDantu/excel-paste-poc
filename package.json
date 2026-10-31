@@ -1,0 +1,11 @@
+{
+  "name": "excel-paste-poc",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Proof of concept: paste from Excel/Word, keep the formatting, export to .xlsx with ExcelJS",
+  "scripts": {
+    "start": "python3 -m http.server 5178",
+    "test": "node --test \"test/**/*.test.js\""
+  }
+}

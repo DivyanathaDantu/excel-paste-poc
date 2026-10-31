@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Office Paste Export</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+  <script type="module" src="src/app.js"></script>
+</head>
+<body>
+  <header class="page-header">
+    <h1>Office paste → Excel &amp; Word</h1>
+    <p class="lede">
+      Paste from Excel or Word. The paste handler moves the clipboard's class-based CSS into inline styles,
+      then ExcelJS and docx write .xlsx and .docx files that read <em>only</em> inline styles, the same limit
+      as your current converter.
+    </p>
+  </header>
+
+  <main class="layout">
+    <section class="card" aria-labelledby="paste-title">
+      <div class="card-head">
+        <h2 id="paste-title">1. Paste</h2>
+        <div class="actions">
+          <button type="button" data-sample="excel">Excel sample</button>
+          <button type="button" data-sample="word">Word sample</button>
+          <button type="button" id="clear">Clear</button>
+        </div>
+      </div>
+      <div id="editor" class="editor" contenteditable="true" role="textbox" aria-multiline="true"
+           aria-label="Paste area" data-placeholder="Copy cells from Excel or text from Word, then paste here (Ctrl+V / ⌘V)."></div>
+      <p id="status" class="status" role="status"></p>
+    </section>
+
+    <section class="card" aria-labelledby="compare-title">
+      <div class="card-head">
+        <h2 id="compare-title">2. What reaches the export</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="compare">
+          <thead>
+            <tr><th scope="col">Formatting</th><th scope="col">Raw clipboard HTML</th><th scope="col">Inlined at paste</th></tr>
+          </thead>
+          <tbody id="stats"></tbody>
+        </table>
+      </div>
+      <div class="downloads">
+        <div class="download-group">
+          <span class="download-label">Excel</span>
+          <div class="actions">
+            <button type="button" class="primary" data-download="xlsx" data-variant="inlined" disabled>Download .xlsx</button>
+            <button type="button" data-download="xlsx" data-variant="raw" disabled>Raw, for comparison</button>
+          </div>
+        </div>
+        <div class="download-group">
+          <span class="download-label">Word</span>
+          <div class="actions">
+            <button type="button" class="primary" data-download="docx" data-variant="inlined" disabled>Download .docx</button>
+            <button type="button" data-download="docx" data-variant="raw" disabled>Raw, for comparison</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card wide" aria-labelledby="source-title">
+      <h2 id="source-title">3. HTML behind it</h2>
+      <details>
+        <summary>Raw clipboard HTML (what the editor receives)</summary>
+        <pre id="raw-source" class="source"></pre>
+      </details>
+      <details>
+        <summary>Inlined HTML (what the converter receives)</summary>
+        <pre id="inlined-source" class="source"></pre>
+      </details>
+    </section>
+  </main>
+</body>
+</html>
